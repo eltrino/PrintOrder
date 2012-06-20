@@ -1,0 +1,5 @@
+<?php
+
+class Eltrino_PrintOrder_Block_Checkout_Multishipping_Success extends Mage_Checkout_Block_Multishipping_Success
+{
+}

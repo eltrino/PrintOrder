@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Eltrino_PrintOrder>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Checkout />
+            </depends>
+        </Eltrino_PrintOrder>
+    </modules>
+</config>
