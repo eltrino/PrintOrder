@@ -52,5 +52,14 @@
                 </observers>
             </sales_order_place_after>
         </events>
+        <routers>
+            <eltrino_printorder>
+                <use>standard</use>
+                <args>
+                    <module>Eltrino_PrintOrder</module>
+                    <frontName>guest</frontName>
+                </args>
+            </eltrino_printorder>
+        </routers>
     </frontend>
 </config>

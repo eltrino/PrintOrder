@@ -38,11 +38,39 @@ class Eltrino_PrintOrder_Helper_Data extends Mage_Core_Helper_Abstract
     /**
      * Generate expired at date for GuestOrder
      *
-     * @todo Attention!!! => time should be generated with const value, e.g. time() + self::DEFAULT_TIME_PERIOD
      * @return int
      */
     protected function _generateExpiredAtForGuestOrder()
     {
-        return date('Y-m-d H:i:s', time() + self::DEFAULT_GUESTORDER_AVAILABILITY_PERIOD);
+        return date('Y-m-d H:i:s', (time() + self::DEFAULT_GUESTORDER_AVAILABILITY_PERIOD));
+    }
+
+    /**
+     * Check if GuestOrder is still active for guest
+     *
+     * @param Eltrino_PrintOrder_Model_Guestorder $guestOrder
+     * @return bool
+     */
+    public function getIsGuestOrderActive(Eltrino_PrintOrder_Model_Guestorder $guestOrder)
+    {
+        if ($guestOrder->getId() && strtotime($guestOrder->getExpiredAt()) > time()) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Check if order can be viewed
+     *
+     * @param Mage_Sales_Model_Order $order
+     * @return bool
+     */
+    public function canViewOrder(Mage_Sales_Model_Order $order)
+    {
+        $availableStates = Mage::getSingleton('sales/order_config')->getVisibleOnFrontStates();
+        if (in_array($order->getState(), $availableStates, $strict = true)) {
+            return true;
+        }
+        return false;
     }
 }
