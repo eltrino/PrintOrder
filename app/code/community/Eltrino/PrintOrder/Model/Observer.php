@@ -14,11 +14,9 @@ class Eltrino_PrintOrder_Model_Observer
         /** @var $order Mage_Sales_Model_Order */
         $order = $observer->getEvent()->getOrder();
         try {
-//            Mage::throwException(get_class(Mage::helper('eltrino_printorder')));
             /** @var $guestOrder Eltrino_PrintOrder_Model_Guestorder */
             $guestOrder = Mage::helper('eltrino_printorder')->createFromOrder($order);
             $guestOrder->save();
-//            Mage::throwException(get_class($guestOrder));
         } catch (Eltrino_PrintOrder_Exception $e) {
 //             if DeveloperMode enabled throw Exception, otherwise skip saving of such object
             if (true == Mage::getIsDeveloperMode()) {

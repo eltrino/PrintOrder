@@ -68,7 +68,7 @@ class Eltrino_PrintOrder_Helper_Data extends Mage_Core_Helper_Abstract
     public function canViewOrder(Mage_Sales_Model_Order $order)
     {
         $availableStates = Mage::getSingleton('sales/order_config')->getVisibleOnFrontStates();
-        if (in_array($order->getState(), $availableStates, $strict = true)) {
+        if (in_array($order->getState(), $availableStates, true)) {
             return true;
         }
         return false;

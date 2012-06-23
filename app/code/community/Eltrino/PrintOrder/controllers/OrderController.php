@@ -66,7 +66,7 @@ class Eltrino_PrintOrder_OrderController extends Mage_Core_Controller_Front_Acti
         $guestOrderHash = $this->getRequest()->getParam('order_hash');
         try {
             $guestOrder = $this->_initGuestOrderByHash($guestOrderHash);
-            $order = $this->_initOrderById((int) $guestOrder->getId());
+            $order = $this->_initOrderById((int) $guestOrder->getOrderId());
 
             Mage::register('current_order', $order);
 
