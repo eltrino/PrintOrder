@@ -18,11 +18,24 @@ class Eltrino_PrintOrder_Model_Observer
             $guestOrder = Mage::helper('eltrino_printorder')->createFromOrder($order);
             $guestOrder->save();
         } catch (Eltrino_PrintOrder_Exception $e) {
-//             if DeveloperMode enabled throw Exception, otherwise skip saving of such object
+            // if DeveloperMode enabled throw Exception, otherwise skip saving of such object
             if (true == Mage::getIsDeveloperMode()) {
                 throw $e;
             }
         }
+        return $this;
+    }
+
+    /**
+     * Clean expired guests orders
+     *
+     * @param Mage_Cron_Model_Schedule $schedule
+     * @return Eltrino_PrintOrder_Model_Observer
+     */
+    public function cleanExpiredGuestsOrders($schedule)
+    {
+        Mage::getModel('eltrino_printorder/guestorder')->getCollection()
+            ->cleanExpiredGuestsOrders();
         return $this;
     }
 }

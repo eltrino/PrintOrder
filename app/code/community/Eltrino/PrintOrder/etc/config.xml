@@ -62,4 +62,12 @@
             </eltrino_printorder>
         </routers>
     </frontend>
+    <crontab>
+        <jobs>
+            <guests_orders_cleaning>
+                <schedule><cron_expr>0 0 * * *</cron_expr></schedule>
+                <run><model>eltrino_printorder/observer::cleanExpiredGuestsOrders</model></run>
+            </guests_orders_cleaning>
+        </jobs>
+    </crontab>
 </config>
