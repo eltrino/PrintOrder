@@ -40,7 +40,8 @@ app/design/adminhtml/default/default/template/x*
 app/design/adminhtml/default/f*
 app/design/frontend/default/
 app/design/frontend/base/default/etc/
-app/design/frontend/base/default/layout/
+app/design/frontend/base/default/layout/*.xml
+app/design/frontend/base/default/layout/s*
 app/design/frontend/base/default/template/*.phtml
 app/design/frontend/base/default/template/a*
 app/design/frontend/base/default/template/b*

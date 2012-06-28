@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<layout>
+    <checkout_onepage_success>
+        <reference name="content">
+            <block type="eltrino_printorder/printorder" name="checkout.success.printorder" template="eltrino/printorder/checkout/printorder.phtml" after="checkout.success"/>
+        </reference>
+    </checkout_onepage_success>
+</layout>
