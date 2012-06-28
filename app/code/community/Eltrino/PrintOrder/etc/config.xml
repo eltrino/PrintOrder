@@ -42,6 +42,13 @@
         </helpers>
     </global>
     <frontend>
+        <layout>
+            <updates>
+                <eltrino_printorder>
+                    <file>eltrino/printorder.xml</file>
+                </eltrino_printorder>
+            </updates>
+        </layout>
         <events>
             <sales_order_place_after>
                 <observers>
