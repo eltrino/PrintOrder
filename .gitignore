@@ -85,5 +85,6 @@ media/
 php.ini.sample
 pkginfo/
 shell/
-skin/
+skin/adminhtml
+skin/install
 var/

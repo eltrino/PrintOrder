@@ -2,6 +2,9 @@
 
 <layout>
     <checkout_onepage_success>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/printorder.css</stylesheet></action>
+        </reference>
         <reference name="content">
             <block type="eltrino_printorder/printorder" name="checkout.success.printorder" template="eltrino/printorder/checkout/printorder.phtml" after="checkout.success"/>
         </reference>

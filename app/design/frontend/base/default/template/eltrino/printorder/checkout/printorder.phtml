@@ -1,7 +1,7 @@
-<div>
-    <?php if ($this->getCanPrintOrder()) :?>
-    <button type="button" class="button" style="float:left" title="<?php echo $this->__('Print Order') ?>" onclick="window.open('<?php echo $this->getPrintOrderUrl() ?>')">
+<?php if ($this->getCanPrintOrder()) :?>
+<div class="printorder-button">
+    <button type="button" class="button" title="<?php echo $this->__('Print Order') ?>" onclick="window.open('<?php echo $this->getPrintOrderUrl() ?>')">
         <span><?php echo $this->__('Print Order') ?></span>
     </button>
-    <?php endif; ?>
 </div>
+<?php endif; ?>
