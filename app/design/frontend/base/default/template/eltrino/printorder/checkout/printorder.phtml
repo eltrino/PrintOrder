@@ -19,9 +19,9 @@
  */
 ?>
 <?php if ($this->getCanPrintOrder()) :?>
-<div>
-    <button type="button" class="button" title="<?php echo $this->__('Print Order') ?>" onclick="window.open('<?php echo $this->getPrintOrderUrl() ?>')">
-        <span><?php echo $this->__('Print Order') ?></span>
-    </button>
+<div class="printorder-button">
+        <button type="button" class="button" title="<?php echo $this->__('Print Order') ?>" onclick="window.open('<?php echo $this->getPrintOrderUrl() ?>')">
+            <span><?php echo $this->__('Print Order') ?></span>
+        </button>
 </div>
 <?php endif; ?>
