@@ -1,4 +1,3 @@
-<?php
 /**
  * Print Order Confirmation as Guest
  *
@@ -17,11 +16,5 @@
  * @copyright   Copyright (c) 2012 Eltrino LLC. (http://eltrino.com)
  * @license     http://eltrino.com/license-eula.txt  Eltrino LLC EULA
  */
-?>
-<?php if ($this->getCanPrintOrder()) :?>
-<div class="printorder-button">
-    <button type="button" class="button" title="<?php echo $this->__('Print Order') ?>" onclick="window.open('<?php echo $this->getPrintOrderUrl() ?>')">
-        <span><span><?php echo $this->__('Print Order') ?></span></span>
-    </button>
-</div>
-<?php endif; ?>
+
+.printorder-button { margin: -36px 0 0; position: relative; z-index: 1; float: left; }
