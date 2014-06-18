@@ -1,0 +1,28 @@
+{
+    "name": "eltrino/po",
+    "type": "magento-module",
+    "license": "OSL-3.0",
+    "homepage": "http://code.eltrino.com/ee.po",
+    "description": "Back To Top",
+    "authors": [
+        {
+            "name": "Eltrino LLC",
+            "email": "license@eltrino.com"
+        }
+    ],
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "map": [
+            ["app/code/community/Eltrino/PrintOrder", "app/code/community/Eltrino/PrintOrder"],
+            ["app/etc/modules/Eltrino_PrintOrder.xml", "app/etc/modules/Eltrino_PrintOrder.xml"],
+            ["app/design/frontend/base/default/layout/eltrino/printorder.xml", "app/design/frontend/base/default/layout/eltrino/printorder.xml"],
+            ["app/design/frontend/base/default/template/eltrino/printorder", "app/design/frontend/base/default/template/eltrino/printorder"],
+            ["skin/frontend/base/default/css/printorder.css", "skin/frontend/base/default/css/printorder.css"],
+            ["skin/frontend/enterprise/default/css/printorder.css", "skin/frontend/enterprise/default/css/printorder.css"]
+        ]
+    }
+}
+
