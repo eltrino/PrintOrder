@@ -3,7 +3,7 @@
     "type": "magento-module",
     "license": "OSL-3.0",
     "homepage": "http://code.eltrino.com/ee.po",
-    "description": "Back To Top",
+    "description": "Print Order Confirmation as Guest",
     "authors": [
         {
             "name": "Eltrino LLC",
