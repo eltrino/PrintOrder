@@ -16,12 +16,7 @@
     "minimum-stability": "dev",
     "extra": {
         "map": [
-            ["app/code/community/Eltrino/PrintOrder", "app/code/community/Eltrino/PrintOrder"],
-            ["app/etc/modules/Eltrino_PrintOrder.xml", "app/etc/modules/Eltrino_PrintOrder.xml"],
-            ["app/design/frontend/base/default/layout/eltrino/printorder.xml", "app/design/frontend/base/default/layout/eltrino/printorder.xml"],
-            ["app/design/frontend/base/default/template/eltrino/printorder", "app/design/frontend/base/default/template/eltrino/printorder"],
-            ["skin/frontend/base/default/css/printorder.css", "skin/frontend/base/default/css/printorder.css"],
-            ["skin/frontend/enterprise/default/css/printorder.css", "skin/frontend/enterprise/default/css/printorder.css"]
+            ["app/code/Eltrino/PrintOrder", "app/code/Eltrino/PrintOrder"]
         ]
     }
 }
