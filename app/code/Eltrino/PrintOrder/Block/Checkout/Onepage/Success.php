@@ -20,42 +20,21 @@
  */
 namespace Eltrino\PrintOrder\Block\Checkout\Onepage;
 
-
 class Success extends \Magento\Checkout\Block\Onepage\Success
 {
 
     /**
-     * @param \Magento\Checkout\Model\Session $checkoutSession
-     * @param \Magento\Customer\Model\Session $customerSession
-     * @param \Magento\Sales\Model\OrderFactory $orderFactory
-     * @param \Magento\Sales\Model\Order\Config $orderConfig
-     * @param \Magento\Framework\App\Http\Context $httpContext
-     * @param array $data
+     * @return string
      */
-    public function __construct(
-        \Magento\Framework\View\Element\Template\Context $context,
-        \Magento\Checkout\Model\Session $checkoutSession,
-        \Magento\Customer\Model\Session $customerSession,
-        \Magento\Sales\Model\OrderFactory $orderFactory,
-        \Magento\Sales\Model\Order\Config $orderConfig,
-        \Magento\Framework\App\Http\Context $httpContext,
-        array $data = []
-    ) {
-        parent::__construct(
-            $context,
-            $checkoutSession,
-            $customerSession,
-            $orderFactory,
-            $orderConfig,
-            $httpContext,
-            $data
-        );
+    public function _beforeToHtml()
+    {
+        // For magento1 compatibility
+        if ($this->getModuleName()) {
+            // For correct template rendering
+            $this->setModuleName(self::extractModuleName(get_parent_class()));
+        }
 
-        /**
-         * For correct template rendering
-         */
-        $this->setModuleName(self::extractModuleName(get_parent_class()));
-
+        return parent::_beforeToHtml();
     }
 
     /**
