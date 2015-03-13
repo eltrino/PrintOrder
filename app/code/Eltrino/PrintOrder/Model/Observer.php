@@ -51,6 +51,14 @@ class Observer
         $this->_guestOrder = $guestOrder;
         $this->_helper = $helper;
         $this->_appState = $state;
+
+        if (!$this->_guestOrder) {
+            $this->_guestOrder = \Mage::getModel('Eltrino\PrintOrder\Model\GuestOrder');
+        }
+
+        if (!$this->_helper) {
+            $this->_helper = \Mage::getModel('Eltrino\PrintOrder\Helper\Data');
+        }
     }
 
     /**
@@ -68,9 +76,9 @@ class Observer
             $guestOrder->save();
         } catch (\Eltrino\PrintOrder\Model\Exception $e) {
             // if DeveloperMode enabled throw Exception, otherwise skip saving of such object
-            if ($this->_appState->getMode() == \Magento\Framework\App\State::MODE_DEVELOPER) {
-                throw new \Eltrino\PrintOrder\Model\Exception(__($e->getMessage()));
-            }
+            //if ($this->_appState->getMode() == \Magento\Framework\App\State::MODE_DEVELOPER) {
+            //    throw new \Eltrino\PrintOrder\Model\Exception(__($e->getMessage()));
+            //}
         }
 
         return $this;

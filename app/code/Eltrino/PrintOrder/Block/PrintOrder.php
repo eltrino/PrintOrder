@@ -64,6 +64,22 @@ class PrintOrder extends \Magento\Framework\View\Element\Template
         $this->_customerSession = $customerSession;
         $this->_config = $config;
         $this->_guestOrder = $guestOrder;
+
+        if (!$this->_checkoutSession) {
+            $this->_checkoutSession = \Mage::getModel('Magento\Checkout\Model\Session');
+        }
+
+        if (!$this->_customerSession) {
+            $this->_customerSession = \Mage::getModel('Magento\Customer\Model\Session');
+        }
+
+        if (!$this->_config) {
+            $this->_config = \Mage::getModel('Magento\Sales\Model\Order\Config');
+        }
+
+        if (!$this->_guestOrder) {
+            $this->_guestOrder = \Mage::getModel('Eltrino\PrintOrder\Model\GuestOrder');
+        }
     }
 
     protected function _beforeToHtml()
@@ -84,8 +100,8 @@ class PrintOrder extends \Magento\Framework\View\Element\Template
         $order = $this->_initOrder();
         if ($order) {
 
-            $isVisible = !in_array($order->getState(),
-                $this->_config->getInvisibleOnFrontStatuses());
+            $isVisible = in_array($order->getState(),
+                $this->_config->getVisibleOnFrontStatuses());
 
             $canPrintOrder = (bool)(($this->_customerSession->isLoggedIn() && $isVisible)
                 || $order->getCustomerIsGuest());

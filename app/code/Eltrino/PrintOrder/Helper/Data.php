@@ -51,6 +51,19 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         $this->_guestOrder = $guestOrder;
         $this->_config = $config;
         $this->_order = $order;
+
+        if (!$this->_guestOrder) {
+            $this->_guestOrder = \Mage::getModel('Eltrino\PrintOrder\Model\GuestOrder');
+        }
+
+        if (!$this->_config) {
+            $this->_config = \Mage::getModel('Magento\Sales\Model\Order\Config');
+        }
+
+        if (!$this->_order) {
+            $this->_order = \Mage::getModel('Magento\Sales\Model\Order');
+        }
+
     }
 
     /**
@@ -93,8 +106,9 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * @param \Eltrino\PrintOrder\Model\GuestOrder
+     * @param $guestOrderHash
      * @return $this
+     * @throws \Eltrino\PrintOrder\Model\Exception
      */
     public function getGuestOrderByHash($guestOrderHash)
     {
@@ -103,7 +117,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         if (!$guestOrder->getId() || !$guestOrder->getOrderId()
             || false == $this->getIsGuestOrderActive($guestOrder)
         ) {
-            //throw new Eltrino\PrintOrder\Model\Exception('Corrupted Guest Order');
+            throw new \Eltrino\PrintOrder\Model\Exception('Corrupted Guest Order');
         }
 
         return $guestOrder;
@@ -126,13 +140,14 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
 
     /**
      * @param $orderId
-     * @return \Magento\Sales\Model\Order
+     * @return $this
+     * @throws \Eltrino\PrintOrder\Model\Exception
      */
     public function getOrderById($orderId)
     {
         $order = $this->_order->load($orderId);
         if (!$order->getId() || false == $this->canViewOrder($order)) {
-            //throw new Eltrino\PrintOrder\Model\Exception('Corrupted Guest Order');
+            throw new \Eltrino\PrintOrder\Model\Exception('Corrupted Guest Order');
         }
 
         return $order;
