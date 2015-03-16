@@ -17,4 +17,4 @@
  * @license     http://eltrino.com/license-eula.txt  Eltrino LLC EULA
  */
 
-.printorder-button { margin: 21px 0 0; position: relative; z-index: 1; float: left; }
+.checkout-onepage-success.page-layout-1column .printorder-button { margin: 21px 0 0; position: relative; z-index: 1; float: left;  }
