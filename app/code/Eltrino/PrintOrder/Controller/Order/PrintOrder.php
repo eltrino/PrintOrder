@@ -74,7 +74,7 @@ class PrintOrder extends \Magento\Framework\App\Action\Action
         }
 
         if (!$context) {
-            $this->_context =\Mage::getModel('Magento\Framework\App\Action\Context', $this);
+            $this->_context = \Mage::getModel('Magento\Framework\App\Action\Context', $this);
         }
 
         parent::__construct($context);
@@ -89,8 +89,7 @@ class PrintOrder extends \Magento\Framework\App\Action\Action
 
             $this->_coreRegistry->register('current_order', $order);
 
-            $this->_context->getView()->loadLayout('print');
-            $this->_context->getView()->loadLayout('sales_order_print');
+            $this->_context->getView()->loadLayout(array('print', 'sales_order_print'));
             $this->_context->getView()->renderLayout();
 
         } catch (\Eltrino\PrintOrder\Model\Exception $e) {

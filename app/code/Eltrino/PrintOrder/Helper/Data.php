@@ -167,7 +167,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     public function canViewOrder(\Magento\Sales\Model\Order $order)
     {
         $availableStates = $this->_config->getVisibleOnFrontStatuses();
-        if (in_array($order->getState(), $availableStates, true)) {
+        if (in_array($order->getStatus(), $availableStates, true)) {
             return true;
         }
 
