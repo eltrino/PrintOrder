@@ -74,7 +74,7 @@ class PrintOrder extends \Magento\Framework\App\Action\Action
         }
 
         if (!$context) {
-            $this->_context =\Mage::getModel('Magento\Framework\Registry', $this);
+            $this->_context =\Mage::getModel('Magento\Framework\App\Action\Context', $this);
         }
 
         parent::__construct($context);
