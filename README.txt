@@ -56,7 +56,7 @@ There are two possible variants of installation
         }
 
     1.3 Run from command line inside of your project document root:
-        composer install
+        "composer install"
     1.4 Flush the Magento caches
 
 2. Installation using archive package.
@@ -64,14 +64,11 @@ There are two possible variants of installation
     2.2
 
         For Magento 1.x:
-            2.2.1 Copy the directory (from temporary) "app/code/Eltrino" to your "community app" project directory,
+            2.2.1 Copy the directories (from temporary):
+                  - "app/code/Eltrino"
+                  - "app/code/Magento"
+                  to your "community app" project directory,
                   for example to "/var/www/vhosts/magento/app/code/comunity"
-            2.2.2 Download the last compatibility module from
-                      https://bitbucket.org/eltrino/compatibility/get/master.zip
-                  and extract to your temporary directory
-            2.2.3 Copy "app" directory from extracting arhive to your project root directory
-                  for example to "/var/www/vhosts/magento"
-
 
         For Magento 2.x:
             2.2.1 Copy the directory "app" from archive to your project root directory,
