@@ -1,7 +1,7 @@
 <?php
 
 /**
- * The MIT License (MIT)
+ * The MIT License (MIT).
  *
  * Copyright (c) 2015 Eltrino LLC (http://eltrino.com)
  *
@@ -23,6 +23,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 namespace Eltrino\PrintOrder\Controller\Order;
 
 class PrintOrder extends \Magento\Framework\App\Action\Action
@@ -33,7 +34,7 @@ class PrintOrder extends \Magento\Framework\App\Action\Action
     protected $resultForwardFactory;
 
     /**
-     * Core registry
+     * Core registry.
      *
      * @var \Magento\Framework\Registry
      */
@@ -50,7 +51,7 @@ class PrintOrder extends \Magento\Framework\App\Action\Action
     protected $_helper;
 
     /**
-     * @param \Magento\Framework\App\Action\Context $context
+     * @param \Magento\Framework\App\Action\Context               $context
      * @param \Magento\Framework\Controller\Result\ForwardFactory $resultForwardFactory
      */
     public function __construct(
@@ -84,13 +85,12 @@ class PrintOrder extends \Magento\Framework\App\Action\Action
         $guestOrderHash = $this->getRequest()->getParam('order_hash');
         try {
             $guestOrder = $this->_helper->getGuestOrderByHash($guestOrderHash);
-            $order = $this->_helper->getOrderById((int)$guestOrder->getOrderId());
+            $order = $this->_helper->getOrderById((int) $guestOrder->getOrderId());
 
             $this->_coreRegistry->register('current_order', $order);
 
             $this->_context->getView()->loadLayout(array('print', 'sales_order_print'));
             $this->_context->getView()->renderLayout();
-
         } catch (\Eltrino\PrintOrder\Model\Exception $e) {
             $this->_forward('noRoute');
         }

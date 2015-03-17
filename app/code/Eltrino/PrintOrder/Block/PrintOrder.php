@@ -1,7 +1,7 @@
 <?php
 
 /**
- * The MIT License (MIT)
+ * The MIT License (MIT).
  *
  * Copyright (c) 2015 Eltrino LLC (http://eltrino.com)
  *
@@ -23,11 +23,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 namespace Eltrino\PrintOrder\Block;
 
 class PrintOrder extends \Magento\Framework\View\Element\Template
 {
-
     /**
      * @var \Magento\Checkout\Model\Session
      */
@@ -50,11 +50,11 @@ class PrintOrder extends \Magento\Framework\View\Element\Template
 
     /**
      * @param \Magento\Framework\View\Element\Template\Context $context
-     * @param \Magento\Checkout\Model\Session $checkoutSession
-     * @param \Magento\Customer\Model\Session $customerSession
-     * @param \Magento\Sales\Model\Order\Config $config
-     * @param \Eltrino\PrintOrder\Model\GuestOrder $guestOrder
-     * @param array $data
+     * @param \Magento\Checkout\Model\Session                  $checkoutSession
+     * @param \Magento\Customer\Model\Session                  $customerSession
+     * @param \Magento\Sales\Model\Order\Config                $config
+     * @param \Eltrino\PrintOrder\Model\GuestOrder             $guestOrder
+     * @param array                                            $data
      */
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
@@ -96,7 +96,7 @@ class PrintOrder extends \Magento\Framework\View\Element\Template
     }
 
     /**
-     * Generate print order url for proper kind of order
+     * Generate print order url for proper kind of order.
      *
      * @return PrintOrder
      */
@@ -104,11 +104,10 @@ class PrintOrder extends \Magento\Framework\View\Element\Template
     {
         $order = $this->_initOrder();
         if ($order) {
-
             $isVisible = in_array($order->getState(),
                 $this->_config->getVisibleOnFrontStatuses());
 
-            $canPrintOrder = (bool)(($this->_customerSession->isLoggedIn() && $isVisible)
+            $canPrintOrder = (bool) (($this->_customerSession->isLoggedIn() && $isVisible)
                 || $order->getCustomerIsGuest());
 
             if ($order->getCustomerIsGuest()) {
@@ -129,7 +128,7 @@ class PrintOrder extends \Magento\Framework\View\Element\Template
     }
 
     /**
-     * Load order by last order id stored in session
+     * Load order by last order id stored in session.
      *
      * @return \Magento\Sales\Model\Order|null
      */
@@ -140,6 +139,6 @@ class PrintOrder extends \Magento\Framework\View\Element\Template
             return $order;
         }
 
-        return null;
+        return;
     }
 }

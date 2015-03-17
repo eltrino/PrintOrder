@@ -1,7 +1,7 @@
 <?php
 
 /**
- * The MIT License (MIT)
+ * The MIT License (MIT).
  *
  * Copyright (c) 2015 Eltrino LLC (http://eltrino.com)
  *
@@ -23,6 +23,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 namespace Eltrino\PrintOrder\Helper;
 
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
@@ -67,12 +68,13 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         if (!$this->_order) {
             $this->_order = \Mage::getModel('Magento\Sales\Model\Order');
         }
-
     }
 
     /**
      * @param \Magento\Sales\Model\Order $order
+     *
      * @return mixed
+     *
      * @throws \Eltrino\PrintOrder\Model\Exception
      */
     public function createFromOrder(\Magento\Sales\Model\Order $order)
@@ -89,9 +91,10 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * Generate hash string for GuestOrder using Order values
+     * Generate hash string for GuestOrder using Order values.
      *
      * @param \Magento\Sales\Model\Order $order
+     *
      * @return string
      */
     protected function _generateHashForGuestOrder(\Magento\Sales\Model\Order $order)
@@ -100,7 +103,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * Generate expired at date for GuestOrder
+     * Generate expired at date for GuestOrder.
      *
      * @return int
      */
@@ -111,7 +114,9 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
 
     /**
      * @param $guestOrderHash
+     *
      * @return $this
+     *
      * @throws \Eltrino\PrintOrder\Model\Exception
      */
     public function getGuestOrderByHash($guestOrderHash)
@@ -128,9 +133,10 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * Check if GuestOrder is still active for guest
+     * Check if GuestOrder is still active for guest.
      *
      * @param \Eltrino\PrintOrder\Model\GuestOrder $guestOrder
+     *
      * @return bool
      */
     public function getIsGuestOrderActive(\Eltrino\PrintOrder\Model\GuestOrder $guestOrder)
@@ -144,7 +150,9 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
 
     /**
      * @param $orderId
+     *
      * @return $this
+     *
      * @throws \Eltrino\PrintOrder\Model\Exception
      */
     public function getOrderById($orderId)
@@ -158,9 +166,10 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * Check if order can be viewed
+     * Check if order can be viewed.
      *
      * @param \Magento\Sales\Model\Order $order
+     *
      * @return bool
      */
     public function canViewOrder(\Magento\Sales\Model\Order $order)

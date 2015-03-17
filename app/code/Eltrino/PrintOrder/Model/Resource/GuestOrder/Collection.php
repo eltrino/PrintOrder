@@ -1,7 +1,7 @@
 <?php
 
 /**
- * The MIT License (MIT)
+ * The MIT License (MIT).
  *
  * Copyright (c) 2015 Eltrino LLC (http://eltrino.com)
  *
@@ -23,13 +23,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 namespace Eltrino\PrintOrder\Model\Resource\GuestOrder;
 
 class Collection extends \Magento\Framework\Model\Resource\Db\Collection\AbstractCollection
 {
-
     /**
-     * Clean expired guests orders
+     * Clean expired guests orders.
      *
      * @return \Eltrino\PrintOrder\Model\Resource\GuestOrder\Collection
      */
@@ -47,13 +47,9 @@ class Collection extends \Magento\Framework\Model\Resource\Db\Collection\Abstrac
     }
 
     /**
-     * @return void
      */
-
     protected function _construct()
     {
         $this->_init('Eltrino\PrintOrder\Model\GuestOrder', 'Eltrino\PrintOrder\Model\Resource\GuestOrder');
     }
-
-
 }

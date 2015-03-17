@@ -1,7 +1,7 @@
 <?php
 
 /**
- * The MIT License (MIT)
+ * The MIT License (MIT).
  *
  * Copyright (c) 2015 Eltrino LLC (http://eltrino.com)
  *
@@ -23,6 +23,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 namespace Eltrino\PrintOrder\Model;
 
 class Observer
@@ -38,14 +39,14 @@ class Observer
     protected $_guestOrder;
 
     /**
-     * @var \Magento\Framework\App\State $_appState
+     * @var \Magento\Framework\App\State
      */
     protected $_appState;
 
     /**
-     * @param GuestOrder $guestOrder
+     * @param GuestOrder                      $guestOrder
      * @param \Eltrino\PrintOrder\Helper\Data $helper
-     * @param \Magento\Framework\App\State $state
+     * @param \Magento\Framework\App\State    $state
      */
     public function __construct(
         \Eltrino\PrintOrder\Model\GuestOrder $guestOrder,
@@ -67,7 +68,9 @@ class Observer
 
     /**
      * @param \Magento\Framework\Event\Observer $observer
+     *
      * @return $this
+     *
      * @throws Exception
      */
     public function fillGuestsOrdersTable(\Magento\Framework\Event\Observer $observer)
@@ -89,9 +92,10 @@ class Observer
     }
 
     /**
-     * Clean expired guests orders
+     * Clean expired guests orders.
      *
      * @param \Magento\Cron\Model\Schedule $schedule
+     *
      * @return \Eltrino\PrintOrder\Model\Observer
      */
     public function cleanExpiredGuestsOrders($schedule)
