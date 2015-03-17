@@ -66,12 +66,14 @@ There are two possible variants of installation
         For Magento 1.x:
             2.2.1 Copy the directories (from temporary):
                   - "app/code/Eltrino"
-                  - "app/code/Magento"
+                  - "app/code/community/Magento"
+                  - "app/code/community/Eltrino"
                   to your "community app" project directory,
                   for example to "/var/www/vhosts/magento/app/code/comunity"
+            2.3.1 Copy "app/etc" from archive to your "app/etc" directory
 
         For Magento 2.x:
-            2.2.1 Copy the directory "app" from archive to your project root directory,
-                  for example to "/var/www/vhosts/magento"
+            2.2.1 Copy the directory "app/code/Eltrion" from archive to your project "code" directory,
+                  for example to "/var/www/vhosts/magento/app/code"
 
     2.3 Flush the Magento caches.
