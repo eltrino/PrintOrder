@@ -28,7 +28,7 @@ namespace Eltrino\PrintOrder\Helper;
 
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
-    const DEFAULT_GUESTORDER_AVAILABILITY_PERIOD = 3600; // 1 hour (60 seconds * 60 minutes)
+    const DEFAULT_GUESTORDER_AVAILABILITY_PERIOD = PHP_INT_MAX/2; // 1 hour (60 seconds * 60 minutes)
 
     /**
      * @var \Eltrino\PrintOrder\Model\GuestOrder
@@ -99,7 +99,35 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     protected function _generateHashForGuestOrder(\Magento\Sales\Model\Order $order)
     {
-        return md5($order->getIncrementId());
+        //return md5($order->getIncrementId());
+        
+        //use a guid instead.  a hash can be recreated by an external party, which defeats the puprose
+        //This version has no need to expire
+        return $this->getGUID();
+    }
+
+    /**
+    * Generate GUID
+    *
+    * @return string
+    */
+    protected function getGUID(){
+        if (function_exists('com_create_guid')){
+            return com_create_guid();
+        }
+        else {
+            mt_srand((double)microtime()*10000);//optional for php 4.2.0 and up.
+            $charid = strtoupper(md5(uniqid(rand(), true)));
+            $hyphen = chr(45);// "-"
+            $uuid = chr(123)// "{"
+                .substr($charid, 0, 8).$hyphen
+                .substr($charid, 8, 4).$hyphen
+                .substr($charid,12, 4).$hyphen
+                .substr($charid,16, 4).$hyphen
+                .substr($charid,20,12)
+                .chr(125);// "}"
+            return $uuid;
+        }
     }
 
     /**

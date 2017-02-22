@@ -25,5 +25,5 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/Module/etc/module.xsd">
-    <module name="Eltrino_PrintOrder" schema_version="2.0.0"/>
+    <module name="Eltrino_PrintOrder" schema_version="2.0.0" setup_version="2.0.0"/>
 </config>

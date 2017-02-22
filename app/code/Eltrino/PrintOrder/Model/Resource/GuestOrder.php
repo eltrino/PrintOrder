@@ -26,7 +26,7 @@
 
 namespace Eltrino\PrintOrder\Model\Resource;
 
-class GuestOrder extends \Magento\Framework\Model\Resource\Db\AbstractDb
+class GuestOrder extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
     /**
      * Resource initialization.
