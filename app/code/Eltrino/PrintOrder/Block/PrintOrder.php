@@ -48,6 +48,8 @@ class PrintOrder extends \Magento\Framework\View\Element\Template
      */
     protected $_guestOrder;
 
+    protected $_helper;
+
     /**
      * @param \Magento\Framework\View\Element\Template\Context $context
      * @param \Magento\Checkout\Model\Session                  $checkoutSession
@@ -62,6 +64,7 @@ class PrintOrder extends \Magento\Framework\View\Element\Template
         \Magento\Customer\Model\Session $customerSession,
         \Magento\Sales\Model\Order\Config $config,
         \Eltrino\PrintOrder\Model\GuestOrder $guestOrder,
+        \Eltrino\PrintOrder\Helper\Data $helper,
         array $data = []
     ) {
         parent::__construct($context, $data);
@@ -69,6 +72,7 @@ class PrintOrder extends \Magento\Framework\View\Element\Template
         $this->_customerSession = $customerSession;
         $this->_config = $config;
         $this->_guestOrder = $guestOrder;
+        $this->_helper = $helper;
 
         if (!$this->_checkoutSession) {
             $this->_checkoutSession = \Mage::getModel('Magento\Checkout\Model\Session');
@@ -84,6 +88,9 @@ class PrintOrder extends \Magento\Framework\View\Element\Template
 
         if (!$this->_guestOrder) {
             $this->_guestOrder = \Mage::getModel('Eltrino\PrintOrder\Model\GuestOrder');
+        }
+        if (!$this->_helper) {
+            $this->_helper = \Mage::getModel('Eltrino\PrintOrder\Helper\Data');
         }
     }
 
@@ -103,6 +110,7 @@ class PrintOrder extends \Magento\Framework\View\Element\Template
     protected function _preparePrintOrderData()
     {
         $order = $this->_initOrder();
+        $printOrderUrl = "empty";
         if ($order) {
             $isVisible = in_array($order->getState(),
                 $this->_config->getVisibleOnFrontStatuses());
@@ -111,15 +119,19 @@ class PrintOrder extends \Magento\Framework\View\Element\Template
                 || $order->getCustomerIsGuest());
 
             if ($order->getCustomerIsGuest()) {
-                $guestOrder = $this->_guestOrder->load($order->getId(), 'order_id');
+                $guestOrder = $this->_guestOrder->load($order->getId(), 'order_id');                
                 if ($guestOrder->getId()) {
+                    $guestOrderHash = $guestOrder->getHash();
+                    $printOrderUrl = $this->getUrl('guest/order/printorder', array('order_hash' => $guestOrderHash));
+                }else{
+                    $guestOrder = $this->_helper->createFromOrder($order);                    
+                    $guestOrder->save();
                     $guestOrderHash = $guestOrder->getHash();
                     $printOrderUrl = $this->getUrl('guest/order/printorder', array('order_hash' => $guestOrderHash));
                 }
             } else {
                 $printOrderUrl = $this->getUrl('sales/order/print', array('order_id' => $order->getId()));
-            }
-
+            }            
             $this->setCanPrintOrder($canPrintOrder)
                 ->setPrintOrderUrl($printOrderUrl);
         }

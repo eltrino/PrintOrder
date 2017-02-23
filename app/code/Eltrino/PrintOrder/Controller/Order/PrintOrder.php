@@ -26,6 +26,8 @@
 
 namespace Eltrino\PrintOrder\Controller\Order;
 
+use Magento\Framework\View\Result\PageFactory;
+
 class PrintOrder extends \Magento\Framework\App\Action\Action
 {
     /**
@@ -50,6 +52,11 @@ class PrintOrder extends \Magento\Framework\App\Action\Action
      */
     protected $_helper;
 
+     /**
+     * @var \Magento\Framework\View\Result\PageFactory
+     */
+    protected $_resultPageFactory;
+
     /**
      * @param \Magento\Framework\App\Action\Context               $context
      * @param \Magento\Framework\Controller\Result\ForwardFactory $resultForwardFactory
@@ -58,24 +65,14 @@ class PrintOrder extends \Magento\Framework\App\Action\Action
         \Magento\Framework\App\Action\Context $context,
         \Magento\Framework\Controller\Result\ForwardFactory $resultForwardFactory,
         \Magento\Framework\Registry $registry,
-        \Eltrino\PrintOrder\Helper\Data $helper
+        \Eltrino\PrintOrder\Helper\Data $helper,
+        PageFactory $resultPageFactory
     ) {
         $this->resultForwardFactory = $resultForwardFactory;
         $this->_helper = $helper;
         $this->_context = $context;
         $this->_coreRegistry = $registry;
-
-        if (!$this->_helper) {
-            $this->_helper = \Mage::getModel('Eltrino\PrintOrder\Helper\Data');
-        }
-
-        if (!$registry) {
-            $this->_coreRegistry = \Mage::getModel('Magento\Framework\Registry');
-        }
-
-        if (!$context) {
-            $this->_context = \Mage::getModel('Magento\Framework\App\Action\Context', $this);
-        }
+        $this->_resultPageFactory = $resultPageFactory;
 
         parent::__construct($context);
     }
@@ -89,8 +86,14 @@ class PrintOrder extends \Magento\Framework\App\Action\Action
 
             $this->_coreRegistry->register('current_order', $order);
 
-            $this->_context->getView()->loadLayout(array('print', 'sales_order_print'));
-            $this->_context->getView()->renderLayout();
+            $resultPage = $this->_resultPageFactory->create();
+            $resultPage->addHandle('sales_order_print'); //loads the layout of module_custom_customlayout.xml file with its name
+            return $resultPage;
+            
+            /**
+            * $this->_context->getView()->loadLayout(array('print', 'sales_order_print'));
+            * $this->_context->getView()->renderLayout();
+            **/
         } catch (\Eltrino\PrintOrder\Model\Exception $e) {
             $this->_forward('noRoute');
         }
