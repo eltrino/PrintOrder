@@ -1,3 +1,10 @@
+# Tastefulmenus fork
+## Note about current updates to fork
+Currently I have not made all the changes to completely bring the module up to date.
+It's working in Magento2 2.1.5, but there is some cleanup left to do.
+While this notice is still up, the code in this fork is very much in dev.
+
+
 # Print Order Confirmation as Guest
 
 This module allows guest users to print their order confirmation on the order complete/success page in Magento.
